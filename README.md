@@ -9,7 +9,7 @@
 - [TailwindCSS](https://tailwindcss.com/)
 - [Firebase](https://firebase.google.com/?hl=pt-br)
 
-![Detalhes Web](public/print_capa.png)
+![Detalhes Web](public/print_home.png)
 
 ## Introdução
 
