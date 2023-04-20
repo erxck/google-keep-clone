@@ -1,9 +1,10 @@
-# Google Keep Clone - ReactJS + TailwindCSS + Firebase
+# Google Keep Clone - TypeScript + ReactJS + TailwindCSS + Firebase
 
-> Aplicação web clone do Google Keep, desenvolvida com ReactJS, TailwindCSS e Firebase.
+> Aplicação web clone do Google Keep, desenvolvida com TypeScript, ReactJS, TailwindCSS e Firebase.
 
 ## Tecnologias
 
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [TailwindCSS](https://tailwindcss.com/)
@@ -15,7 +16,7 @@
 
 Para fins de desenvolvimento e teste, siga às instruções abaixo.
 
-O projeto pode ser construído com npm ou yarn. Caso não tenha nenhuma instalada, escolha uma das opções abaixo.
+O projeto pode ser construído com **npm** ou **yarn**. Caso não tenha nenhuma instalada, escolha uma das opções abaixo.
 
 - **NPM** (Node Package Manager) é um gerenciador de pacotes de código aberto para JavaScript que faz parte do ecossistema do Node.js. [Download Node.js](https://nodejs.org/en)
 
@@ -28,7 +29,8 @@ O projeto pode ser construído com npm ou yarn. Caso não tenha nenhuma instalad
 ```
 1. git clone https://github.com/erxck/google-keep-clone.git
 2. cd google-keep-clone
-3. Copie o arquivo .env.example para um arquivo .env e preencha as variáveis ​​de ambiente do seu aplicativo Firebase
+3. Copie o arquivo .env.example para um arquivo .env e preencha
+as variáveis ​​de ambiente do seu aplicativo Firebase
 ```
 
 - Instale as dependências e inicie a aplicação.
