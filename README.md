@@ -1,6 +1,6 @@
 # Google Keep Clone - ReactJS + TailwindCSS + Firebase
 
-> Sistema para exemplificar a construção de um cadastro desenvolvido em React!
+> Aplicação web clone do Google Keep, desenvolvida com ReactJS, TailwindCSS e Firebase.
 
 ## Tecnologias
 
@@ -47,7 +47,7 @@ ou
 
 ## Manter contato
 
-Erick Nunes
+**Erick Nunes**
 
 - [contatoerickrian@gmail.com](mailto:contatoerickrian@gmail.com)
 - [github.com/erxck](https://github.com/erxck)
