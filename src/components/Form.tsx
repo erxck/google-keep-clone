@@ -39,17 +39,11 @@ export default function Form({ addNote, note }: FormProps): JSX.Element {
 
   return (
     <form
-      className="flex flex-col mx-auto w-full max-w-lg gap-2 border border-gray-400 p-2 rounded-lg shadow-lg"
+      className="flex flex-col mx-auto bg-white w-full max-w-lg gap-2 border border-gray-00 p-2 rounded-lg shadow-lg"
       onSubmit={handleSubmit}
     >
       <div className="w-full" onClick={() => setClick(true)}>
-        {id ? (
-          <h1 className="text-2xl px-3 mb-1 font-bold text-black">
-            Editar Nota
-          </h1>
-        ) : (
-          <h1 className="text-2xl px-3 mb-1 font-bold text-black">Nova Nota</h1>
-        )}
+        <h1 className="text-2xl px-3 mb-1 font-bold text-black">Nova Nota</h1>
         <label className={`${click ? "block" : "hidden"}`} htmlFor="title">
           <input
             className="py-2 px-3 w-full text-base font-bold text-black  bg-transparent placeholder-gray-500 placeholder:font-bold focus:outline-none"

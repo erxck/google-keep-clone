@@ -174,7 +174,7 @@ export default function NoteCard({
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4">
               {notes.map((note) => (
                 <li key={note.Id} className="flex-1">
-                  <div className="group rounded-lg border border-gray-400 shadow-lg px-4 pt-4 pb-2 hover:border-gray-500 duration-300">
+                  <div className="group rounded-lg bg-white border shadow-lg px-4 pt-4 pb-2 lg:hover:border-gray-400 duration-300">
                     <div className="flex justify-between gap-5">
                       <h2 className="text-lg font-bold text-black mb-2 lg:text-xl">
                         {note.Title}
