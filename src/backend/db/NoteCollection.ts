@@ -7,6 +7,9 @@ import {
   getDocs,
   query,
   orderBy,
+  deleteDoc,
+  doc,
+  setDoc,
 } from "firebase/firestore";
 
 export default class NoteCollection implements NoteRepository {
@@ -25,17 +28,32 @@ export default class NoteCollection implements NoteRepository {
   };
 
   async addNote(note: Note): Promise<Note> {
-    try {
-      const docRef = await addDoc(
-        collection(db, "notes").withConverter(this.conversor),
-        note
-      );
-      console.log("Document written with ID: ", docRef.id);
-    } catch (error) {
-      console.error("Error adding document: ", error);
+    if (note?.Id) {
+      await this.updateNote(note);
+    } else {
+      await this.collection(note);
     }
 
     return note;
+  }
+
+  async updateNote(note: Note): Promise<void> {
+    try {
+      await setDoc(
+        doc(db, "notes", note.Id).withConverter(this.conversor),
+        note
+      );
+    } catch (error) {
+      console.error("Error updating document: ", error);
+    }
+  }
+
+  async deleteNote(note: Note): Promise<void> {
+    try {
+      await deleteDoc(doc(db, "notes", note.Id));
+    } catch (error) {
+      console.error("Error removing document: ", error);
+    }
   }
 
   async getNotes(): Promise<Note[]> {
@@ -50,5 +68,17 @@ export default class NoteCollection implements NoteRepository {
     });
 
     return notes;
+  }
+
+  private async collection(note: Note): Promise<any> {
+    try {
+      const docRef = await addDoc(
+        collection(db, "notes").withConverter(this.conversor),
+        note
+      );
+      // console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   }
 }

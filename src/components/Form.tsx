@@ -1,13 +1,13 @@
 import Note from "../core/Note";
-import NoteRepository from "../core/NoteRepository";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type FormProps = {
-  repository: NoteRepository;
-  getNotes: () => void;
+  addNote: (note: Note) => void;
+  note: Note | null;
 };
 
-export default function Form({ repository, getNotes }: FormProps): JSX.Element {
+export default function Form({ addNote, note }: FormProps): JSX.Element {
+  const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [click, setClick] = useState<boolean>(false);
@@ -18,25 +18,23 @@ export default function Form({ repository, getNotes }: FormProps): JSX.Element {
     const note = {
       title,
       body,
+      id,
     };
 
     note.title === "" || note.body === ""
       ? alert("Preencha todos os campos!")
-      : addNote(new Note(note.title, note.body));
+      : addNote(new Note(note.title, note.body, note.id));
 
     setTitle("");
     setBody("");
-  };
-
-  const addNote = async (note: Note) => {
-    await repository.addNote(note);
-    getNotes();
+    setId("");
   };
 
   const closeForm = () => {
-    setClick(false);
     setTitle("");
     setBody("");
+    setId("");
+    setClick(false);
   };
 
   return (
@@ -45,9 +43,16 @@ export default function Form({ repository, getNotes }: FormProps): JSX.Element {
       onSubmit={handleSubmit}
     >
       <div className="w-full" onClick={() => setClick(true)}>
+        {id ? (
+          <h1 className="text-2xl px-3 mb-1 font-bold text-black">
+            Editar Nota
+          </h1>
+        ) : (
+          <h1 className="text-2xl px-3 mb-1 font-bold text-black">Nova Nota</h1>
+        )}
         <label className={`${click ? "block" : "hidden"}`} htmlFor="title">
           <input
-            className="py-2 px-3 w-full font-bold text-black  bg-transparent placeholder-gray-500 placeholder:font-bold focus:outline-none"
+            className="py-2 px-3 w-full text-base font-bold text-black  bg-transparent placeholder-gray-500 placeholder:font-bold focus:outline-none"
             type="text"
             name="title"
             id="title"
@@ -62,7 +67,7 @@ export default function Form({ repository, getNotes }: FormProps): JSX.Element {
             name="body"
             id="body"
             value={body}
-            placeholder="Criar uma nota..."
+            placeholder="Digite sua nota..."
             onChange={(e) => setBody(e.target.value)}
           />
         </label>
